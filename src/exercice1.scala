@@ -51,8 +51,11 @@ object exercice1 {
       var isHalfFare: String = ""
       var numberTicket: Int = 0
       var numberHalfFare: Int = 0
+      var numberFullFare: Int = 0
 
       // Pricing
+      var priceTicket: Double = 0
+      var priceHalfFare: Double = 0
       var totalPrice: Double = 0
       var totalCoin: Double = 0
       var coinInserted: Int = 0
@@ -66,11 +69,21 @@ object exercice1 {
 
     // Execute
 
-      // Ask for zone
+      // Ask for zone and define price
       println(promptTicketSelection)
       zoneSelected = readInt()
+      if (zoneSelected == 1) {
+        priceTicket = priceCenter
+        priceHalfFare = priceCenter*0.5
+      } else if (zoneSelected == 2) {
+        priceTicket = priceCity
+        priceHalfFare = priceCity*0.5
+      } else if (zoneSelected == 3) {
+        priceTicket = priceSub
+        priceHalfFare = priceSub*0.5
+      }
 
-      // Ask for half-fare
+    // Ask for half-fare
       println(promptHalfFare)
       isHalfFare = readLine()
 
@@ -97,17 +110,11 @@ object exercice1 {
         }
       }
 
+      // Number of full fare tickets and half fare price for simplicity
+      numberFullFare = numberTicket - numberHalfFare
+
       // Total price computation
-      if (zoneSelected == 1) {
-        totalPrice = ((numberTicket - numberHalfFare) * priceCenter) + (numberHalfFare * (priceCenter/2))
-        println(totalPrice)
-      } else if (zoneSelected == 2) {
-        totalPrice = ((numberTicket - numberHalfFare) * priceCity) + (numberHalfFare * (priceCity/2))
-        println(totalPrice)
-      } else if (zoneSelected == 3) {
-        totalPrice = ((numberTicket - numberHalfFare) * priceSub) + (numberHalfFare * (priceSub/2))
-        println(totalPrice)
-      }
+      totalPrice = numberFullFare * priceTicket + numberHalfFare * priceHalfFare
 
       // Ask for payment
       while (totalCoin < totalPrice) {
@@ -138,5 +145,41 @@ object exercice1 {
       println(promptConfirmOrder)
       confirmOrder = readLine()
 
+      // Process the order
+      if (confirmOrder == "n") {
+        println("Retour de votre monnaie :")
+        if (countCoinFive == 1) {
+          println(s"$countCoinFive pièce de 5 CHF")
+        } else if (countCoinFive > 1) {
+          println(s"$countCoinFive pièces de 5 CHF")
+        }
+        if (countCoinTwo == 1) {
+          println(s"$countCoinTwo pièce de 2 CHF")
+        } else if (countCoinTwo > 1) {
+          println(s"$countCoinTwo pièces de 2 CHF")
+        }
+        if (countCoinOne == 1) {
+          println(s"$countCoinOne pièce de 1 CHF")
+        } else if (countCoinOne > 1) {
+          println(s"$countCoinOne pièces de 1 CHF")
+        }
+        if (countCoinFifty == 1) {
+          println(s"$countCoinFifty pièce de 0.5 CHF")
+        } else if (countCoinFifty > 1) {
+          println(s"$countCoinFifty pièces de 0.5 CHF")
+        }
+        if (countCoinTwenty == 1) {
+          println(s"$countCoinTwenty pièce de 0.2 CHF")
+        } else if (countCoinTwenty > 1) {
+          println(s"$countCoinTwenty pièces de 0.2 CHF")
+        }
+        if (countCoinTen == 1) {
+          println(s"$countCoinTen pièce de 0.1 CHF")
+        } else if (countCoinTen > 1) {
+          println(s"$countCoinTen pièces de 0.1 CHF")
+        }
+      } else if (confirmOrder == "y") {
+
+      }
   }
 }
