@@ -48,6 +48,7 @@ object exercice1 {
 
       // Ticket selection
       var zoneSelected: Int = 0
+      var zoneName: String = ""
       var isHalfFare: String = ""
       var numberTicket: Int = 0
       var numberHalfFare: Int = 0
@@ -66,6 +67,11 @@ object exercice1 {
       var countCoinTwenty: Int = 0
       var countCoinTen: Int = 0
       var confirmOrder: String = ""
+      var change: Int = 0
+
+      // Loop counters
+      var i: Int = 1
+      var j: Int = 1
 
     // Execute
 
@@ -75,12 +81,15 @@ object exercice1 {
       if (zoneSelected == 1) {
         priceTicket = priceCenter
         priceHalfFare = priceCenter*0.5
+        zoneName = nameCenter
       } else if (zoneSelected == 2) {
         priceTicket = priceCity
         priceHalfFare = priceCity*0.5
+        zoneName = nameCity
       } else if (zoneSelected == 3) {
         priceTicket = priceSub
         priceHalfFare = priceSub*0.5
+        zoneName = nameSub
       }
 
     // Ask for half-fare
@@ -145,7 +154,7 @@ object exercice1 {
       println(promptConfirmOrder)
       confirmOrder = readLine()
 
-      // Process the order
+      // Process the order (cancelled order or printing tickets)
       if (confirmOrder == "n") {
         println("Retour de votre monnaie :")
         if (countCoinFive == 1) {
@@ -178,8 +187,40 @@ object exercice1 {
         } else if (countCoinTen > 1) {
           println(s"$countCoinTen pièces de 0.1 CHF")
         }
-      } else if (confirmOrder == "y") {
+      } else if (confirmOrder == "o") {
+            println(s"Ticket zone tarifaire : $zoneName")
+            println(s"Plein tarif : $numberFullFare")
+            println(s"Demi-tarif : $numberHalfFare")
+            println(s"Montant total TTC : $totalPrice")
+            println("Les transports Scala vous souhaitent un bon trajet")
+      }
 
+      // Change
+      if (totalPrice != totalCoin) {
+        change = (totalCoin - totalPrice) * 100
+        // Reset counters
+        countCoinFive = 0
+        countCoinTwo = 0
+        countCoinOne = 0
+        countCoinFifty = 0
+        countCoinTwenty = 0
+        countCoinTen = 0
+        // Count change
+
+        change%5
+
+        /*while (change % 500) {
+          countCoinFive += 1
+          change = change - 5
+        }
+        while (change % 200) {
+          countCoinTwo += 1
+          change = change - 2
+        }
+        while (change % 100) {
+          countCoinFive += 1
+          change = change - 5
+        }*/
       }
   }
 }
