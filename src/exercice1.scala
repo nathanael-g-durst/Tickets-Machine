@@ -67,7 +67,7 @@ object exercice1 {
       var countCoinTwenty: Int = 0
       var countCoinTen: Int = 0
       var confirmOrder: String = ""
-      var change: Int = 0
+      var change: Double = 0
 
       // Loop counters
       var i: Int = 1
@@ -198,6 +198,8 @@ object exercice1 {
       // Change
       if (totalPrice != totalCoin) {
         change = (totalCoin - totalPrice) * 100
+        change = change.toInt
+
         // Reset counters
         countCoinFive = 0
         countCoinTwo = 0
@@ -205,22 +207,54 @@ object exercice1 {
         countCoinFifty = 0
         countCoinTwenty = 0
         countCoinTen = 0
+
         // Count change
-
-        change%5
-
-        /*while (change % 500) {
+        while (change / 500 >= 1) {
           countCoinFive += 1
-          change = change - 5
+          change = change - 500
         }
-        while (change % 200) {
+        while (change / 200 >= 1) {
           countCoinTwo += 1
-          change = change - 2
+          change = change - 200
         }
-        while (change % 100) {
-          countCoinFive += 1
-          change = change - 5
-        }*/
+        while (change / 100 >= 1) {
+          countCoinOne += 1
+          change = change - 100
+        }
+        while (change / 50 >= 1) {
+          countCoinFifty += 1
+          change = change - 50
+        }
+        while (change / 20 >= 1) {
+          countCoinTwenty += 1
+          change = change - 20
+        }
+        while (change / 10 >= 1) {
+          countCoinTen += 1
+          change = change - 10
+        }
+
+        // Give change back
+        println("Votre monnaie :")
+        if (countCoinFive >= 1) {
+          println(s"$countCoinFive de 5 CHF")
+        }
+        if (countCoinTwo >= 1) {
+          println(s"$countCoinTwo de 2 CHF")
+        }
+        if (countCoinOne >= 1) {
+          println(s"$countCoinOne de 1 CHF")
+        }
+        if (countCoinFifty >= 1) {
+          println(s"$countCoinFifty de 50 Centimes")
+        }
+        if (countCoinTwenty >= 1) {
+          println(s"$countCoinTwenty de 20 Centimes")
+        }
+        if (countCoinTen >= 1) {
+          println(s"$countCoinTen de 10 Centimes")
+        }
+
       }
   }
 }
