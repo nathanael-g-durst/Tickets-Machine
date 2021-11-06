@@ -34,6 +34,12 @@ object exercice1 {
         val promptAskMoney: String = "Saisissez le montant de la pièce que vous insérez :"
         // Ask for order confirmation
         val promptConfirmOrder: String = "Confirmez-vous l’achat (o/n) ?"
+        // Give change back when order canceled
+        val promptChangeCancelled: String = "Retour de votre monnaie :"
+        // Ticket thank you message
+        val promptThankYou: String = "Les transports Scala vous souhaitent un bon trajet"
+        // Give change back when order confirmed
+        val promptChangeConfirmed: String = "Votre monnaie :"
 
       // Errors
 
@@ -68,10 +74,6 @@ object exercice1 {
       var countCoinTen: Int = 0
       var confirmOrder: String = ""
       var change: Double = 0
-
-      // Loop counters
-      var i: Int = 1
-      var j: Int = 1
 
     // Execute
 
@@ -156,7 +158,7 @@ object exercice1 {
 
       // Process the order (cancelled order or printing tickets)
       if (confirmOrder == "n") {
-        println("Retour de votre monnaie :")
+        println(promptChangeCancelled)
         if (countCoinFive == 1) {
           println(s"$countCoinFive pièce de 5 CHF")
         } else if (countCoinFive > 1) {
@@ -192,69 +194,69 @@ object exercice1 {
             println(s"Plein tarif : $numberFullFare")
             println(s"Demi-tarif : $numberHalfFare")
             println(s"Montant total TTC : $totalPrice")
-            println("Les transports Scala vous souhaitent un bon trajet")
-      }
+            println(promptThankYou)
 
-      // Change
-      if (totalPrice != totalCoin) {
-        change = (totalCoin - totalPrice) * 100
-        change = change.toInt
+            // Change
+            if (totalPrice != totalCoin) {
 
-        // Reset counters
-        countCoinFive = 0
-        countCoinTwo = 0
-        countCoinOne = 0
-        countCoinFifty = 0
-        countCoinTwenty = 0
-        countCoinTen = 0
+              change = (totalCoin - totalPrice) * 100
+              change = change.toInt
 
-        // Count change
-        while (change / 500 >= 1) {
-          countCoinFive += 1
-          change = change - 500
-        }
-        while (change / 200 >= 1) {
-          countCoinTwo += 1
-          change = change - 200
-        }
-        while (change / 100 >= 1) {
-          countCoinOne += 1
-          change = change - 100
-        }
-        while (change / 50 >= 1) {
-          countCoinFifty += 1
-          change = change - 50
-        }
-        while (change / 20 >= 1) {
-          countCoinTwenty += 1
-          change = change - 20
-        }
-        while (change / 10 >= 1) {
-          countCoinTen += 1
-          change = change - 10
-        }
+              // Reset counters
+              countCoinFive = 0
+              countCoinTwo = 0
+              countCoinOne = 0
+              countCoinFifty = 0
+              countCoinTwenty = 0
+              countCoinTen = 0
 
-        // Give change back
-        println("Votre monnaie :")
-        if (countCoinFive >= 1) {
-          println(s"$countCoinFive de 5 CHF")
-        }
-        if (countCoinTwo >= 1) {
-          println(s"$countCoinTwo de 2 CHF")
-        }
-        if (countCoinOne >= 1) {
-          println(s"$countCoinOne de 1 CHF")
-        }
-        if (countCoinFifty >= 1) {
-          println(s"$countCoinFifty de 50 Centimes")
-        }
-        if (countCoinTwenty >= 1) {
-          println(s"$countCoinTwenty de 20 Centimes")
-        }
-        if (countCoinTen >= 1) {
-          println(s"$countCoinTen de 10 Centimes")
-        }
+              // Count change
+              while (change / 500 >= 1) {
+                countCoinFive += 1
+                change = change - 500
+              }
+              while (change / 200 >= 1) {
+                countCoinTwo += 1
+                change = change - 200
+              }
+              while (change / 100 >= 1) {
+                countCoinOne += 1
+                change = change - 100
+              }
+              while (change / 50 >= 1) {
+                countCoinFifty += 1
+                change = change - 50
+              }
+              while (change / 20 >= 1) {
+                countCoinTwenty += 1
+                change = change - 20
+              }
+              while (change / 10 >= 1) {
+                countCoinTen += 1
+                change = change - 10
+              }
 
+              // Give change back
+              println(promptChangeConfirmed)
+              if (countCoinFive >= 1) {
+                println(s"$countCoinFive de 5 CHF")
+              }
+              if (countCoinTwo >= 1) {
+                println(s"$countCoinTwo de 2 CHF")
+              }
+              if (countCoinOne >= 1) {
+                println(s"$countCoinOne de 1 CHF")
+              }
+              if (countCoinFifty >= 1) {
+                println(s"$countCoinFifty de 50 Centimes")
+              }
+              if (countCoinTwenty >= 1) {
+                println(s"$countCoinTwenty de 20 Centimes")
+              }
+              if (countCoinTen >= 1) {
+                println(s"$countCoinTen de 10 Centimes")
+              }
+            }
       }
   }
 }
