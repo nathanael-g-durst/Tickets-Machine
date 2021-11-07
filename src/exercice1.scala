@@ -39,7 +39,7 @@ object exercice1 {
         // Ticket thank you message
         val promptThankYou: String = "Les transports Scala vous souhaitent un bon trajet"
         // Give change back when order confirmed
-        val promptChangeConfirmed: String = "Votre monnaie :"
+        val promptChangeConfirmed: String = "Votre monnaie : "
 
       // Errors
 
@@ -74,6 +74,16 @@ object exercice1 {
       var countCoinTen: Int = 0
       var confirmOrder: String = ""
       var change: Double = 0
+      var changeString: String = ""
+
+/*    // Functions
+
+      // Change string writer
+      def stringWriter (): String {
+        f
+
+        return
+      }*/
 
     // Execute
 
@@ -160,34 +170,34 @@ object exercice1 {
       if (confirmOrder == "n") {
         println(promptChangeCancelled)
         if (countCoinFive == 1) {
-          println(s"$countCoinFive pièce de 5 CHF")
+          changeString = s"$countCoinFive pièce de 5 CHF, ")
         } else if (countCoinFive > 1) {
-          println(s"$countCoinFive pièces de 5 CHF")
+          changeString = s"$countCoinFive pièces de 5 CHF, ")
         }
         if (countCoinTwo == 1) {
-          println(s"$countCoinTwo pièce de 2 CHF")
+          changeString = s"$countCoinTwo pièce de 2 CHF, "
         } else if (countCoinTwo > 1) {
-          println(s"$countCoinTwo pièces de 2 CHF")
+          changeString = s"$countCoinTwo pièces de 2 CHF, "
         }
         if (countCoinOne == 1) {
-          println(s"$countCoinOne pièce de 1 CHF")
+          changeString = s"$countCoinOne pièce de 1 CHF, "
         } else if (countCoinOne > 1) {
-          println(s"$countCoinOne pièces de 1 CHF")
+          changeString = s"$countCoinOne pièces de 1 CHF, "
         }
         if (countCoinFifty == 1) {
-          println(s"$countCoinFifty pièce de 0.5 CHF")
+          changeString = s"$countCoinFifty pièce de 50 Centimes, "
         } else if (countCoinFifty > 1) {
-          println(s"$countCoinFifty pièces de 0.5 CHF")
+          changeString = s"$countCoinFifty pièces de 50 Centimes, "
         }
         if (countCoinTwenty == 1) {
-          println(s"$countCoinTwenty pièce de 0.2 CHF")
+          changeString = s"$countCoinTwenty pièce de 20 Centimes, ")
         } else if (countCoinTwenty > 1) {
-          println(s"$countCoinTwenty pièces de 0.2 CHF")
+          changeString = s"$countCoinTwenty pièces de 20 Centimes, ")
         }
         if (countCoinTen == 1) {
-          println(s"$countCoinTen pièce de 0.1 CHF")
+          changeString = s"$countCoinTen pièce de 10 Centimes, ")
         } else if (countCoinTen > 1) {
-          println(s"$countCoinTen pièces de 0.1 CHF")
+          changeString = s"$countCoinTen pièces de 10 Centimes, ")
         }
       } else if (confirmOrder == "o") {
             println(s"Ticket zone tarifaire : $zoneName")
@@ -237,25 +247,25 @@ object exercice1 {
               }
 
               // Give change back
-              println(promptChangeConfirmed)
               if (countCoinFive >= 1) {
-                println(s"$countCoinFive de 5 CHF")
+                changeString = s"$countCoinFive de 5 CHF, "
               }
               if (countCoinTwo >= 1) {
-                println(s"$countCoinTwo de 2 CHF")
+                changeString = s"$changeString$countCoinTwo de 2 CHF, "
               }
               if (countCoinOne >= 1) {
-                println(s"$countCoinOne de 1 CHF")
+                changeString = s"$changeString$countCoinOne de 1 CHF, "
               }
               if (countCoinFifty >= 1) {
-                println(s"$countCoinFifty de 50 Centimes")
+                changeString = s"$changeString$countCoinFifty de 50 Centimes, "
               }
               if (countCoinTwenty >= 1) {
-                println(s"$countCoinTwenty de 20 Centimes")
+                changeString = s"$changeString$countCoinTwenty de 20 Centimes, "
               }
               if (countCoinTen >= 1) {
-                println(s"$countCoinTen de 10 Centimes")
+                changeString = s"$changeString$countCoinTen de 10 Centimes"
               }
+              println(s"$promptChangeConfirmed$changeString")
             }
       }
   }
