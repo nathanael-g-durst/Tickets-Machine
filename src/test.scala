@@ -150,7 +150,6 @@ object test {
       }
       // Check amount inserted
       totalCoin = (countCoinFive*5)+(countCoinTwo*2)+countCoinOne+(countCoinFifty*0.5)+(countCoinTwenty*0.2)+(countCoinTen*0.1)
-      println(s"Inserted: $totalCoin out of $totalPrice")
     }
 
     // Ask for confirmation
