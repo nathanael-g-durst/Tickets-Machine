@@ -75,15 +75,30 @@ object exercice1 {
       var confirmOrder: String = ""
       var change: Double = 0
       var changeString: String = ""
+      var test: String = ""
 
-/*    // Functions
+  // Functions
 
       // Change string writer
-      def stringWriter (): String {
-        f
-
-        return
-      }*/
+      def stringWriter (remainingChange:Double, coinValue:Int, coinNumber:Int): String = {
+        var changeStringWriter: String = s"$coinNumber"
+        if (coinNumber == 1) {
+          changeStringWriter = s"$changeStringWriter pièce de"
+        } else if (coinNumber > 1) {
+          changeStringWriter = s"$changeStringWriter pièces de"
+        }
+        if (coinNumber > 0) {
+          changeStringWriter = s"$changeStringWriter $coinValue CHF"
+          if (remainingChange > 0) {
+            changeStringWriter = s"$changeStringWriter, "
+          } else {
+            changeStringWriter = s"$changeStringWriter"
+          }
+        } else {
+          changeStringWriter = ""
+        }
+        return changeStringWriter
+      }
 
     // Execute
 
@@ -170,9 +185,9 @@ object exercice1 {
       if (confirmOrder == "n") {
         println(promptChangeCancelled)
         if (countCoinFive == 1) {
-          changeString = s"$countCoinFive pièce de 5 CHF, ")
+          changeString = s"$countCoinFive pièce de 5 CHF, "
         } else if (countCoinFive > 1) {
-          changeString = s"$countCoinFive pièces de 5 CHF, ")
+          changeString = s"$countCoinFive pièces de 5 CHF, "
         }
         if (countCoinTwo == 1) {
           changeString = s"$countCoinTwo pièce de 2 CHF, "
@@ -190,14 +205,14 @@ object exercice1 {
           changeString = s"$countCoinFifty pièces de 50 Centimes, "
         }
         if (countCoinTwenty == 1) {
-          changeString = s"$countCoinTwenty pièce de 20 Centimes, ")
+          changeString = s"$countCoinTwenty pièce de 20 Centimes, "
         } else if (countCoinTwenty > 1) {
-          changeString = s"$countCoinTwenty pièces de 20 Centimes, ")
+          changeString = s"$countCoinTwenty pièces de 20 Centimes, "
         }
         if (countCoinTen == 1) {
-          changeString = s"$countCoinTen pièce de 10 Centimes, ")
+          changeString = s"$countCoinTen pièce de 10 Centimes, "
         } else if (countCoinTen > 1) {
-          changeString = s"$countCoinTen pièces de 10 Centimes, ")
+          changeString = s"$countCoinTen pièces de 10 Centimes, "
         }
       } else if (confirmOrder == "o") {
             println(s"Ticket zone tarifaire : $zoneName")
