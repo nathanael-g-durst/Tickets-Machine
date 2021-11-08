@@ -1,4 +1,6 @@
 // Imports
+import jdk.incubator.vector.VectorOperators.Test
+
 import scala.io.StdIn.readLine
 import scala.io.StdIn.readInt
 
@@ -100,6 +102,11 @@ object exercice1 {
         return changeStringWriter
       }
 
+      while (change > 0) {
+
+      }
+
+/*
     // Execute
 
       // Ask for zone and define price
@@ -240,27 +247,33 @@ object exercice1 {
                 countCoinFive += 1
                 change = change - 500
               }
+              test = stringWriter(remainingChange = change, coinValue = 5, coinNumber = countCoinFive)
               while (change / 200 >= 1) {
                 countCoinTwo += 1
                 change = change - 200
               }
+              test = s"$test"+stringWriter(remainingChange = change, coinValue = 2, coinNumber = countCoinTwo)"
               while (change / 100 >= 1) {
                 countCoinOne += 1
                 change = change - 100
               }
+              test = s"$test$stringWriter(remainingChange = change, coinValue = 1, coinNumber = countCoinOne)"
               while (change / 50 >= 1) {
                 countCoinFifty += 1
                 change = change - 50
               }
+              test = s"$test$stringWriter(remainingChange = change, coinValue = 0.5, coinNumber = countCoinFifty)"
               while (change / 20 >= 1) {
                 countCoinTwenty += 1
                 change = change - 20
               }
+              test = s"$test$stringWriter(remainingChange = change, coinValue = 0.2, coinNumber = countCoinTwenty)"
               while (change / 10 >= 1) {
                 countCoinTen += 1
                 change = change - 10
               }
-
+              test = s"$test$stringWriter(remainingChange = change, coinValue = 0.1, coinNumber = countCoinTen)"
+              println(test)
               // Give change back
               if (countCoinFive >= 1) {
                 changeString = s"$countCoinFive de 5 CHF, "
@@ -282,6 +295,6 @@ object exercice1 {
               }
               println(s"$promptChangeConfirmed$changeString")
             }
-      }
+      }*/
   }
 }
