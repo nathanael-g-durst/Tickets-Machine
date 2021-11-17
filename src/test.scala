@@ -64,6 +64,9 @@ object test {
     var priceTicket: Double = 0
     var priceHalfFare: Double = 0
     var totalPrice: Double = 0
+    var printerTicket: Int = 0
+    var printerHalfFare: Int = 0
+    var printerTotalPrice: Double = 0
     var totalCoin: Double = 0
     var coinInserted: Int = 0
     var countCoinFive: Int = 0
@@ -126,6 +129,10 @@ object test {
     numberFullFare = numberTicket - numberHalfFare
 
     // Total price computation
+    printerTicket = (priceTicket * 100).toInt
+    printerHalfFare = (priceHalfFare * 100).toInt
+    printerTotalPrice = numberFullFare * printerTicket + numberHalfFare * printerHalfFare
+    printerTotalPrice = (printerTotalPrice * 0.01)
     totalPrice = numberFullFare * priceTicket + numberHalfFare * priceHalfFare
 
     // Ask for payment
@@ -223,7 +230,7 @@ object test {
       println(s"Ticket zone tarifaire : $zoneName")
       println(s"Plein tarif : $numberFullFare")
       println(s"Demi-tarif : $numberHalfFare")
-      println(s"Montant total TTC : $totalPrice")
+      println(s"Montant total TTC : $printerTotalPrice")
       println(promptThankYou)
 
       // Change
